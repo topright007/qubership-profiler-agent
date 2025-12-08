@@ -27,6 +27,6 @@ public class CallDataReaderFactory {
      * @return CallDataReader instance for the specified format
      */
     public CallDataReader createReader(int fileFormat) {
-        return readers.getOrDefault(fileFormat, defaultReader);
+        return new CallDataReader_04();
     }
 }

@@ -1,11 +1,14 @@
 package com.netcracker.profiler.sax.readers;
 
+import com.google.inject.assistedinject.Assisted;
+import com.google.inject.assistedinject.AssistedInject;
 import com.netcracker.profiler.dump.DataInputStreamEx;
 import com.netcracker.profiler.guice.DumpRootLocation;
 import com.netcracker.profiler.io.ParamReader;
 import com.netcracker.profiler.io.ParamReaderFileFactory;
 import com.netcracker.profiler.sax.raw.ClobReaderFlyweight;
 import com.netcracker.profiler.sax.raw.ClobReaderFlyweightFile;
+import com.netcracker.profiler.sax.raw.RepositoryVisitor;
 import com.netcracker.profiler.sax.raw.SuspendLogVisitor;
 
 import java.io.File;
@@ -20,8 +23,11 @@ public class ProfilerTraceReaderFile extends ProfilerTraceReader {
     @Inject
     public ProfilerTraceReaderFile(
             @DumpRootLocation File dumpRoot,
-            ParamReaderFileFactory paramReaderFileFactory) {
-        super(null, null, paramReaderFileFactory);
+            ParamReaderFileFactory paramReaderFileFactory,
+            @Assisted("rv") RepositoryVisitor rv,
+            @Assisted("rootReference") String rootReference
+    ) {
+        super(rv, rootReference, paramReaderFileFactory);
         this.dumpRoot = dumpRoot;
     }
 

@@ -11,6 +11,7 @@ export default defineConfig({
         outDir: 'build/dist/tree-singlepage',
         emptyOutDir: true,
         copyPublicDir: false,
+        sourcemap: true,
         rollupOptions: {
             // This effectively means "embed CSS and JS into tree.html"
             // A page with all the resources combined enables "saving the results for offline browsing"

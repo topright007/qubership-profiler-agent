@@ -15,6 +15,7 @@ export default defineConfig({
     },
     build: {
         outDir: 'build/dist/es6',
+        sourcemap: true,
         rollupOptions: {
             input: {
                 // overwrite default .html entry
